@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
   export let id,
     text,
     variant,
     checked = false,
-    onChange;
+    onOptionCheck;
 </script>
 
 <style>
@@ -48,13 +48,13 @@
     font-family: "Lucida Sans Unicode", "Arial Unicode MS", Arial;
   }
 
-  .primary > [type="checkbox"]:not(:checked) + label:after,
-  .primary > [type="checkbox"]:checked + label:after {
+  [type="checkbox"].primary:not(:checked) + label:after,
+  [type="checkbox"].primary:checked + label:after {
     color: #0053ba;
   }
 
-  .secondary > [type="checkbox"]:not(:checked) + label:after,
-  .secondary > [type="checkbox"]:checked + label:after {
+  input[type="checkbox"].secondary:not(:checked) + label:after,
+  input[type="checkbox"].secondary:checked + label:after {
     color: #3a8f15;
   }
   /* checked mark aspect changes */
@@ -98,6 +98,6 @@
     class={variant}
     id="checkbox-{id}"
     bind:checked
-    on:change={() => onChange(id)} />
+    on:change={onOptionCheck} />
   <label for="checkbox-{id}">{text}</label>
 </div>
